@@ -1,0 +1,13 @@
+const express=require('express')
+const app=express()
+const db=require('./database/db')
+const cors=require('cors')
+const FacultyRoute=require('./Routes/Faculty.routes')
+const ModuleRouter=require('./Routes/Module.routes')
+const LecturerRouter=require('./Routes/Lecturer.routes')
+app.use(express.json())
+app.use(cors())
+app.use('/faculty',FacultyRoute)
+app.use('/module',ModuleRouter)
+app.use('/lecturer',LecturerRouter)
+module.exports=app

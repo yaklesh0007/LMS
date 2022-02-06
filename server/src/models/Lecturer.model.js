@@ -1,0 +1,40 @@
+const mongoose=require('mongoose')
+const LecturerModel=mongoose.model('LecturerModel',{
+    name:{
+        type:String,
+        require:true,
+        
+    },
+    email:{
+        type:String,
+        require:true,
+        unique:true
+    },
+    phone:{
+        type:String,
+        require:true
+    },
+    DOB:{
+        type:Date,
+        require:true
+    },
+    gender:{
+        type:String,
+        require:true,
+        Enum:["Male","Female","Other"]
+    },
+    nationality:{
+        type:String,
+        require:true
+    },
+    address:{
+            type:String,
+            require:true
+    },
+    Faculty_id:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'FacultyModel'
+    },
+    modules:[String]
+})
+module.exports=LecturerModel
