@@ -51,5 +51,20 @@ ModuleRouter.post('/save',[
     }
 
 })
+ModuleRouter.get('/byfaculty/:id',(req,res)=>{
+
+    console.log(req.params['id'])
+    const Faculty_id=req.params['id']
+    ModuleModel.find({Faculty_id:Faculty_id})
+    .then((data)=>{
+        res.status(200).json({data,success:true})
+        console.log(data)
+    })
+    .catch(err=>{
+        res.status(404).json({message: "Result not found"})
+        
+    })
+    
+})
 
 module.exports=ModuleRouter
