@@ -126,11 +126,11 @@ changeHandler=(e)=>{
   return true
  }
 
- savedata=(e)=>{
-  e.preventDefault();
+ savedata=(event)=>{
+  event.preventDefault();
    const isValid=this.HandleValidation
    if(isValid===true){
-      axios.post(`http://localhost:90/lecturer/`)
+      axios.post(`http://localhost:90/lecturer/`, this.state)
       .then(resp=>{
         console.log(resp)
       })

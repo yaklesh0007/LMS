@@ -68,11 +68,13 @@ LecturerRouter.post('/',[
         })
         .catch(err=>{
             res.status(400).json({err,success:false})
+            console.log(err)
         })
         
     }
     else{
         res.status(400).json({errors,success:false})
+        console.log(errors)
     }
 
 })
