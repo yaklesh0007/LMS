@@ -129,7 +129,7 @@ changeHandler=(e)=>{
  savedata=(event)=>{
   event.preventDefault();
    const isValid=this.HandleValidation
-   if(isValid===true){
+   if(isValid){
       axios.post(`http://localhost:90/lecturer/`, this.state)
       .then(resp=>{
         console.log(resp)
@@ -156,29 +156,30 @@ changeHandler=(e)=>{
         <Row className='Form_heading'>
         <CardTitle ><h3 >Save Lecturer Information</h3></CardTitle>
         </Row>
-        <Form>
+        <Form onSubmit={this.savedata}>
         <FormGroup>
           <Label for="exampleEmail">Email</Label>
           <Input type="email" name="email" id="exampleEmail"
-          onChange={this.changeHandler} value={this.state.email} placeholder="abc@xyz.com" />
+          onChange={this.changeHandler} value={this.state.email} placeholder="abc@xyz.com" required />
         <span style={{color: "red"}}>{this.state.emailerror}</span>
         </FormGroup>
         <FormGroup>
           <Label for="exampleEmail">Phone number</Label>
           <Input type="text" name="phone" id="examplePhone" onChange={this.changeHandler}
-          value={this.state.phone}
+          value={this.state.phone} required
           placeholder="Enter your phone number" minLength={10}  maxLength={15} />
         <span style={{color: "red"}}>{this.state.phoneerror}</span>
         </FormGroup>
         <FormGroup>
           <Label for="examplePassword">Name</Label>
           <Input type="text" name="name" id="exampleName" onChange={this.changeHandler} value={this.state.name}
-           placeholder="Enter Lecturer Name"  />
+           placeholder="Enter Lecturer Name"   required/>
         <span style={{color: "red"}}>{this.state.nameerror}</span>
         </FormGroup>
         <FormGroup>
           <Label for="examplePassword">Address</Label>
-          <Input type="text" name="address" id="exampleAddress" onChange={this.changeHandler} value={this.state.address}
+          <Input type="text" name="address" id="exampleAddress" onChange={this.changeHandler}
+           value={this.state.address} required
           placeholder="Enter your address" />
         <span style={{color: "red"}}>{this.state.addresserror}</span>
         </FormGroup>
@@ -186,7 +187,7 @@ changeHandler=(e)=>{
           <Label for="examplePassword">Nationality</Label>
           <Input type="text" name="nationality" id="exampleName" 
           onChange={this.changeHandler} value={this.state.nationality}
-           placeholder="Please enter your nationality" />
+           placeholder="Please enter your nationality" required />
         <span style={{color: "red"}}>{this.state.nationalityerror}</span>
         </FormGroup>
         <FormGroup>
@@ -258,7 +259,7 @@ changeHandler=(e)=>{
         <span style={{color: "red"}}>{this.state.DOBerror}</span>
        </FormGroup>
        
-        <Button color='primary' onSubmit={this.savedata} block>Submit</Button>
+        <Button color='primary' type='submit'  block>Submit</Button>
       </Form>
       
       </CardBody>
